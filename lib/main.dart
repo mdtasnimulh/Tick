@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/ui/home_page.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
+  // binding ensure
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // initialize the Hive
+  await Hive.initFlutter();
+
+  // open a hive box
+  var box = await Hive.openBox('toDoBox');
+
   runApp(const MyApp());
 }
 
